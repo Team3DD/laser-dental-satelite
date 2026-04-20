@@ -1,0 +1,101 @@
+﻿---
+import Button from './ui/button.astro';
+
+const navLinks = [
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#nosotros',  label: 'Nosotros'  },
+  { href: '#reviews',   label: 'Reviews'   },
+];
+---
+
+<header class="fixed top-0 w-full z-50 px-4 pt-4">
+  <nav class="max-w-7xl mx-auto px-6 backdrop-blur-md rounded-3xl bg-white/60 border border-white/60 shadow-md">
+
+    <!-- Desktop -->
+    <div class="hidden lg:grid grid-cols-3 items-center h-20">
+
+      <div class="flex items-center gap-12">
+        {navLinks.map(({ href, label }) => (
+          <a href={href} class="text-lg tracking-wide text-sky-950 hover:text-white/80 transition-opacity duration-200">
+            {label}
+          </a>
+        ))}
+      </div>
+
+      <div class="flex flex-col items-center gap-0 text-sky-950 hover:text-white/80 transition-opacity duration-200">
+        <a href="/" class="font-serif text-2xl font-bold text-shadow-sm">Láser Dental</a>
+        <span class="text-[0.55rem] tracking-[0.8em] pl-[0.8em]">SATÉLITE</span>
+      </div>
+
+      <div class="flex justify-end items-center gap-12">
+        <a href="/blog" class="text-lg tracking-wide text-sky-950 hover:text-white/80 transition-opacity duration-200">
+          Blog
+        </a>
+        <Button text="Contacto" href="#contacto" variant="primary" size="md" />
+      </div>
+
+    </div>
+
+    <!-- Mobile -->
+    <input type="checkbox" id="menu-toggle" class="sr-only peer" />
+
+    <div class="lg:hidden flex items-center justify-between h-16">
+
+      <div class="flex flex-col items-center gap-0 text-sky-950">
+        <a href="/" class="font-serif text-lg font-bold leading-none">Láser Dental</a>
+        <span class="text-[0.5rem] tracking-[0.6em] pl-[0.6em]">SATÉLITE</span>
+      </div>
+
+      <label for="menu-toggle" class="cursor-pointer p-2 text-sky-950" aria-label="Abrir menú">
+        <svg class="menu-icon w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="close-icon w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </label>
+
+    </div>
+
+    <!-- Dropdown mobile -->
+    <div class="lg:hidden grid grid-rows-[0fr] peer-checked:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+      <div class="overflow-hidden">
+        <div class="flex flex-col gap-4 py-5 border-t border-white/30">
+          {navLinks.map(({ href, label }) => (
+            <a href={href} class="text-md tracking-wide text-sky-950 hover:text-white/80 transition-opacity duration-200">
+              {label}
+            </a>
+          ))}
+          <a href="/blog" class="text-md tracking-wide text-sky-950 hover:text-white/80 transition-opacity duration-200">
+            Blog
+          </a>
+          <div class="flex justify-end">
+            <Button text="Contacto" href="#contacto" variant="primary" size="sm" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+</header>
+
+<style>
+  .close-icon { display: none; }
+  .menu-icon  { display: block; }
+
+  .menu-icon, .close-icon {
+    transition: opacity 0.2s ease, transform 0.25s ease;
+  }
+
+  #menu-toggle:checked ~ div .menu-icon  { display: none; }
+  #menu-toggle:checked ~ div .close-icon { display: block; }
+
+  #menu-toggle:checked ~ div .close-icon {
+    animation: spin-in 0.25s ease forwards;
+  }
+
+  @keyframes spin-in {
+    from { opacity: 0; transform: rotate(-45deg) scale(0.8); }
+    to   { opacity: 1; transform: rotate(0deg)  scale(1);   }
+  }
+</style>

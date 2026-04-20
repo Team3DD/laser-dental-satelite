@@ -1,0 +1,85 @@
+---
+import Button from '../ui/button.astro';
+import siteData from '../../content/site.json';
+
+interface Servicio {
+  name:        string;
+  description: string;
+  icon?:       string;
+  image?:      string;
+  badge?:      string;
+}
+
+const { servicios, serviciosPage } = siteData as {
+  servicios:     Servicio[];
+  serviciosPage: { label: string; title: string; description: string };
+};
+---
+
+<section id="servicios" class="py-24 bg-gradient-to-b from-sky-200 to-transparent">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="text-center mb-16">
+      <span class="text-sm tracking-[0.7em] uppercase mb-4 block font-semibold text-sky-700">
+        {serviciosPage.label}
+      </span>
+      <h2 class="text-4xl md:text-7xl leading-tight text-sky-950">{serviciosPage.title}</h2>
+      <p class="text-lg max-w-3xl mx-auto mt-6 text-sky-950/70">{serviciosPage.description}</p>
+    </div>
+
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
+      {servicios.map((s, i) => (
+        <li>
+          <a href="#contacto"
+             class="card card--media animated-border group block"
+             style="aspect-ratio: 3/4;"
+             aria-label={`Agendar cita: ${s.name}`}>
+
+            {s.image
+              ? <img
+                  src={s.image}
+                  alt={s.name}
+                  width="400"
+                  height="533"
+                  loading={i < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  fetchpriority={i === 0 ? 'high' : 'auto'}
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              : <div class="absolute inset-0 flex items-center justify-center text-7xl bg-gradient-to-br from-sky-400/80 to-sky-600/60"
+                     aria-hidden="true">
+                  {s.icon}
+                </div>
+            }
+
+            <div class="absolute inset-0 bg-gradient-to-t from-sky-950/70 via-sky-950/10 to-transparent" />
+
+            {s.badge && (
+              <span class="absolute top-4 left-4 z-10 text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm text-white">
+                {s.badge}
+              </span>
+            )}
+
+            <div class="card__panel">
+              <h3 class="text-white font-semibold leading-snug drop-shadow-lg">
+                {s.name}
+              </h3>
+              <div class="card__panel-body">
+                <p class="text-white/85 text-lg leading-relaxed mt-2"
+                   style="max-width: unset; margin-bottom: 0;">
+                  {s.description}
+                </p>
+              </div>
+            </div>
+
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="text-center mt-14">
+      <Button text="Solicita una cita" href="#contacto" variant="primary" size="lg" />
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,41 @@
+﻿---
+export interface Props {
+  text?: string;
+  variant?: 'primary' | 'secondary' | 'circle';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  ariaLabel?: string;
+}
+
+const {
+  text,
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  disabled = false,
+  ariaLabel,
+} = Astro.props;
+
+const btnClass = `btn liquid-glass btn--${variant} btn--${size}`;
+const label = ariaLabel ?? text;
+---
+
+{disabled ? (
+  <span
+    class="inline-flex select-none cursor-not-allowed rounded-full px-4 py-2 text-md opacity-40"
+    style="background: rgba(0,0,0,0.08); color: var(--color-professional-gray);"
+  >
+    {text}
+  </span>
+) : href ? (
+  <a href={href} role="button" class={btnClass} aria-label={label}>
+    <span><slot>{text}</slot></span>
+  </a>
+) : (
+  <button type={type} class={btnClass} aria-label={label}>
+    <span><slot>{text}</slot></span>
+  </button>
+)}

@@ -1,0 +1,380 @@
+﻿@import 'tailwindcss';
+
+@theme {
+  --color-clinical-blue:     oklch(45% 0.18 250);
+  --color-turquoise:         oklch(65% 0.15 220);
+  --color-professional-gray: oklch(28% 0.08 250);
+  --color-light-blue:        oklch(98% 0.01 240);
+  --color-white:             oklch(100% 0 0);
+
+  --color-primary:    var(--color-clinical-blue);
+  --color-accent:     var(--color-turquoise);
+  --color-surface:    var(--color-light-blue);
+  --color-foreground: var(--color-professional-gray);
+
+  --radius-card: 1.5rem;
+  --radius-btn:  999vw;
+  --transition-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-time: 400ms;
+  --border-width: clamp(1px, 0.0625em, 4px);
+}
+
+@property --angle-1 {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: -75deg;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* BASE */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+@layer base {
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    background-color: var(--color-surface);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 1.15;
+    color: var(--color-foreground);
+    text-wrap: balance;
+  }
+  h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; }
+  h2 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; }
+  h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 600; }
+
+  h4, h5, h6 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    line-height: 1.35;
+    color: var(--color-foreground);
+    text-wrap: balance;
+  }
+  h4 { font-size: clamp(1.125rem, 2vw, 1.5rem); font-weight: 600; }
+  h5 { font-size: clamp(1rem, 1.5vw, 1.25rem); font-weight: 600; }
+  h6 { font-size: clamp(0.875rem, 1vw, 1rem); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  p {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--color-foreground);
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+  p.lead {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.65;
+    color: oklch(from var(--color-foreground) l c h / 0.8);
+  }
+  p.caption {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: oklch(from var(--color-foreground) l c h / 0.6);
+    letter-spacing: 0.01em;
+  }
+
+  a:not([class]) {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-color: oklch(from var(--color-primary) l c h / 0.3);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  }
+  a:not([class]):hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+  a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  ul:not([class]), ol:not([class]) {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    padding-left: 1.5rem;
+    color: var(--color-foreground);
+  }
+  li { margin-bottom: 0.4em; }
+
+  .label {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+}
+
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
+html { scroll-behavior: smooth; }
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* COMPONENTES */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+@layer components {
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * RESET DE BOTÓN — va ANTES de liquid-glass para que no lo pise
+   * ───────────────────────────────────────────────────────────────────────── */
+  .btn {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--radius-btn);
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * LIQUID GLASS — núcleo compartido .btn y .card--glass
+   * No define border-radius: cada consumidor hereda el suyo propio.
+   * ───────────────────────────────────────────────────────────────────────── */
+  .liquid-glass {
+    position: relative;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(160deg, oklch(100% 0 0 / 0.45) 0%, oklch(100% 0 0 / 0.2) 100%);
+    box-shadow:
+      inset 0 0.125em 0.125em oklch(100% 0.00011 271.152 / 0.432),
+      inset 0 -0.125em 0.125em oklch(0% 0 0 / 0.05),
+      0 0.125em 0.2em oklch(0% 0 0 / 0.12),
+      0 0 0 var(--border-width) oklch(100% 0 0 / 0.35);
+    transition:
+      transform var(--transition-time) var(--transition-ease),
+      box-shadow var(--transition-time) var(--transition-ease),
+      backdrop-filter var(--transition-time) var(--transition-ease);
+  }
+
+  .liquid-glass:hover {
+    backdrop-filter: blur(12px);
+    box-shadow:
+      inset 0 0.15em 0.2em oklch(100% 0.00011 271.152 / 0.87),
+      inset 0 -0.125em 0.125em oklch(0% 0 0 / 0.05),
+      0 0.2em 0.3em oklch(0% 0 0 / 0.15),
+      0 0 0 var(--border-width) oklch(100% 0 0 / 0.5);
+  }
+
+  .liquid-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(160deg, oklch(100% 0.00011 271.152 / 0.842) 0%, oklch(100% 0.00011 271.152 / 0.253) 40%, oklch(100% 0 0 / 0) 60%);
+    pointer-events: none;
+    transition: opacity var(--transition-time) var(--transition-ease);
+  }
+  .liquid-glass:hover::before { opacity: 0.7; }
+
+  .liquid-glass::after {
+    content: '';
+    position: absolute;
+    inset: calc(var(--border-width) * -1);
+    border-radius: inherit;
+    padding: var(--border-width);
+    background: conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      oklch(100% 0 0 / 0.8),
+      oklch(100% 0 0 / 0.1) 15% 40%,
+      oklch(100% 0 0 / 0.8) 50%,
+      oklch(100% 0 0 / 0.1) 60% 85%,
+      oklch(100% 0 0 / 0.8)
+    );
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    transition: --angle-1 600ms var(--transition-ease);
+    pointer-events: none;
+  }
+  .liquid-glass:hover::after  { --angle-1: -125deg; }
+  .liquid-glass:active::after { --angle-1: -200deg; }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * ANIMATED BORDER (card--media y otros usos sueltos)
+   * ───────────────────────────────────────────────────────────────────────── */
+  .animated-border { position: relative; }
+  .animated-border::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      oklch(100% 0 0 / 0.8),
+      oklch(100% 0 0 / 0.1) 15% 40%,
+      oklch(100% 0 0 / 0.8) 50%,
+      oklch(100% 0 0 / 0.1) 60% 85%,
+      oklch(100% 0 0 / 0.8)
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    pointer-events: none;
+    transition: --angle-1 500ms ease;
+    z-index: 1;
+  }
+  .animated-border:hover::after { --angle-1: -125deg; }
+
+  .contact-grid:has(.form-column :focus-within) .info-column {
+    filter: blur(4px);
+    transition: filter 0.3s ease;
+  }
+  .form-column {
+    transition: filter 0.3s ease;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * CARDS BASE
+   * ───────────────────────────────────────────────────────────────────────── */
+  .card {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid oklch(100% 0 0 / 0.25);
+    transition: transform 0.35s var(--transition-ease), box-shadow 0.35s var(--transition-ease);
+  }
+  .card:hover { transform: translateY(-4px); }
+
+  .card--glass {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+
+  .card--media {
+    background: oklch(28% 0.08 250 / 0.08);
+    box-shadow: 0 8px 32px oklch(0% 0 0 / 0.08);
+  }
+  .card--media:hover {
+    box-shadow: 0 16px 48px oklch(0% 0 0 / 0.14);
+  }
+  .card__panel {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 2;
+    padding: 1.25rem 1.5rem 1.5rem;
+    backdrop-filter: blur(14px);
+    background: oklch(100% 0 0 / 0.18);
+    border-top: 1px solid oklch(100% 0 0 / 0.25);
+    box-shadow: 0 -8px 24px oklch(0% 0 0 / 0.1);
+    background-image: linear-gradient(160deg, oklch(100% 0 0 / 0.22) 0%, oklch(100% 0 0 / 0.06) 60%, oklch(100% 0 0 / 0) 100%);
+    transform: translateY(calc(100% - 4.5rem));
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .card--media:hover .card__panel { transform: translateY(0); }
+  .card__panel-body {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease 0.15s, transform 0.3s ease 0.15s;
+  }
+  .card--media:hover .card__panel-body {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card--plain {
+    background: oklch(100% 0 0);
+    border-color: oklch(28% 0.08 250 / 0.07);
+    box-shadow: 0 2px 8px oklch(0% 0 0 / 0.05), 0 8px 24px oklch(0% 0 0 / 0.04);
+  }
+  .card--plain:hover {
+    box-shadow: 0 4px 16px oklch(0% 0 0 / 0.08), 0 16px 48px oklch(0% 0 0 / 0.07);
+  }
+  .card--plain::after { display: none; }
+
+  .card--media.animated-border::after {
+    background: conic-gradient(
+      from var(--angle-1) at 50% 50%,
+      oklch(45% 0.18 250 / 0.25),
+      oklch(65% 0.15 220 / 0.08) 20% 70%,
+      oklch(45% 0.18 250 / 0.25)
+    );
+  }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * ANIMACIONES SCROLL
+   * ───────────────────────────────────────────────────────────────────────── */
+  @keyframes scroll-down {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
+  }
+  @keyframes scroll-up {
+    from { transform: translateY(-50%); }
+    to   { transform: translateY(0); }
+  }
+  .animate-scroll-down { animation: scroll-down 18s linear infinite; }
+  .animate-scroll-up   { animation: scroll-up   18s linear infinite; }
+  .hover\:animate-scroll-down-slow:hover { animation-duration: 26s; }
+  .hover\:animate-scroll-up-slow:hover   { animation-duration: 26s; }
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * BTN — hover/active/focus van DESPUÉS de liquid-glass para poder
+   * sobreescribir transform sin conflicto
+   * ───────────────────────────────────────────────────────────────────────── */
+  .btn:hover  { transform: scale(0.95); }
+  .btn:active { transform: scale(0.965); }
+  .btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .btn span {
+    position: relative;
+    z-index: 1;
+    display: block;
+    user-select: none;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .btn--sm span { font-size: 1rem;   padding: 0.3em 0.8em; }
+  .btn--md span { font-size: 1.2rem; padding: 0.4em 1.2em; }
+  .btn--lg span { font-size: 1.6rem; padding: 0.5em 1.4em; }
+
+  .btn--primary span    { color: var(--color-foreground); }
+
+  .btn--secondary {
+    background: linear-gradient(160deg, oklch(55% 0.17 240 / 0.4) 0%, oklch(45% 0.18 250 / 0.25) 100%);
+  }
+  .btn--secondary span  { color: oklch(98% 0 0); }
+
+  .btn--circle {
+    border-radius: 50%;
+    background: linear-gradient(160deg, oklch(100% 0 0 / 0.25) 0%, oklch(100% 0 0 / 0.08) 100%);
+  }
+  .btn--circle::after,
+  .btn--circle::before  { border-radius: 50%; }
+  .btn--circle.btn--sm  { width: 2.25rem; height: 2.25rem; }
+  .btn--circle.btn--md  { width: 2.75rem; height: 2.75rem; }
+  .btn--circle.btn--lg  { width: 3.5rem;  height: 3.5rem;  }
+  .btn--circle span     { padding: 0; color: oklch(98% 0 0); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* UTILIDADES */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+@layer utilities {
+  @media (hover: none) and (pointer: coarse) {
+    .animated-border::after,
+    .liquid-glass::after {
+      transition: none;
+    }
+    .animated-border:hover::after,
+    .liquid-glass:hover::after,
+    .liquid-glass:active::after {
+      --angle-1: -75deg;
+    }
+  }
+}

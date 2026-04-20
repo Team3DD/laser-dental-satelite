@@ -1,0 +1,72 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+import blogPosts from '../data/blog-posts.json';
+import siteData from '../content/site.json';
+
+interface BlogPost {
+  title:   string;
+  excerpt: string;
+  slug:    string;
+  icon?:   string;
+}
+
+const posts = blogPosts as BlogPost[];
+---
+
+<Layout
+  title={`Blog — ${siteData.siteTitle}`}
+  description="Artículos sobre odontología láser, cuidado dental, blanqueamiento y salud bucal del equipo de Laser Dental Satélite."
+  canonical="https://laserdentalsatelite.com/blog"
+>
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <!-- HEADER -->
+      <div class="text-center mb-16">
+        <span class="label mb-4 block">Consejos y novedades</span>
+        <h1 class="mb-4">Blog</h1>
+        <p class="lead mx-auto text-center" style="max-width: 48ch;">
+          Todo sobre salud bucal, tecnología láser y cuidado dental de la mano de nuestros especialistas.
+        </p>
+      </div>
+
+      {posts.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          {posts.map(post => (
+            <a
+              href={`/blog/${post.slug}`}
+              class="group block rounded-2xl border border-neutral-200 p-6 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <!-- ICON -->
+              <div class="text-3xl mb-4">
+                {post.icon ?? '🦷'}
+              </div>
+
+              <!-- TITLE -->
+              <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                {post.title}
+              </h3>
+
+              <!-- EXCERPT -->
+              <p class="text-neutral-600 text-sm mb-4">
+                {post.excerpt}
+              </p>
+
+              <!-- CTA -->
+              <span class="text-sm font-medium text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                Leer más →
+              </span>
+            </a>
+          ))}
+
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <p class="lead">Próximamente — estamos preparando contenido para ti.</p>
+        </div>
+      )}
+
+    </div>
+  </section>
+</Layout>

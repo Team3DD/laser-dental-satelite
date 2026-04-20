@@ -1,0 +1,109 @@
+---
+import siteData from '../../content/site.json';
+
+const testimonials = siteData.testimonials || [];
+const extended = [...testimonials, ...testimonials];
+
+const col1 = extended.filter((_, i) => i % 3 === 0);
+const col2 = extended.filter((_, i) => i % 3 === 1);
+const col3 = extended.filter((_, i) => i % 3 === 2);
+
+const columns = [
+  { items: col1, animation: 'animate-scroll-down', slow: false },
+  { items: col2, animation: 'animate-scroll-up', slow: false },
+  { items: col3, animation: 'animate-scroll-down', slow: true },
+];
+---
+
+<section id="reviews" class="py-24 overflow-hidden bg-gradient-to-t from-sky-200 via-sky-50 to-transparent" aria-labelledby="reviews-heading">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-20">
+      <span class="text-sm tracking-[0.7em] uppercase mb-4 block font-semibold">
+        Opiniones Reales
+      </span>
+      <h2 id="reviews-heading" class="text-4xl md:text-7xl leading-tight">
+        Sonrisas que nos respaldan
+      </h2>
+    </div>
+
+    <div class="relative">
+      <!-- Mobile -->
+      <div class="md:hidden h-4/5 overflow-hidden relative">
+        <div class="animate-scroll-down hover:animate-scroll-down-slow flex flex-col gap-6">
+          {extended.map((item) => (
+            <div class="card card--glass liquid-glass group flex flex-col h-full">
+              <div class="relative z-10 p-8 flex flex-col h-full" style="color: inherit;">
+                <p class="font-['Playfair_Display'] text-xl leading-relaxed mb-6 italic text-center">
+                  “{item.text}”
+                </p>
+                <div class="mt-auto flex items-end justify-between gap-4 pt-4">
+                  <div>
+                    <p class="text-base font-bold">{item.name}</p>
+                    {item.location && <p class="text-sm opacity-70 mt-0.5">{item.location}</p>}
+                  </div>
+                  {item.service && (
+                    <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm"
+                          style="color: inherit;">
+                      {item.service}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Desktop -->
+      <div class="hidden md:grid md:grid-cols-3 gap-6 h-[620px]">
+        {columns.map((col, idx) => (
+          <div class="overflow-hidden relative">
+            <div class={`${col.animation} hover:animate-scroll-down-slow flex flex-col gap-6`}
+                 style={col.slow ? 'animation-duration: 26s;' : ''}>
+              {col.items.map((item) => (
+                <div class="card card--glass liquid-glass group flex flex-col h-full">
+                  <div class="relative z-10 p-4 flex flex-col h-full" style="color: inherit;">
+                    <p class="font-['Playfair_Display'] text-xl leading-relaxed mb-6 italic text-center">
+                      “{item.text}”
+                    </p>
+                    <div class="mt-auto flex items-end justify-between gap-4 pt-4">
+                      <div>
+                        <p class="text-base font-bold">{item.name}</p>
+                        {item.location && <p class="text-sm opacity-70 mt-0.5">{item.location}</p>}
+                      </div>
+                      {item.service && (
+                        <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm"
+                              style="color: inherit;">
+                          {item.service}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll-down {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-50%); }
+  }
+  @keyframes scroll-up {
+    from { transform: translateY(-50%); }
+    to   { transform: translateY(0); }
+  }
+  .animate-scroll-down { animation: scroll-down 18s linear infinite; }
+  .animate-scroll-up   { animation: scroll-up 18s linear infinite; }
+  .hover\:animate-scroll-down-slow:hover { animation-duration: 26s; }
+  .hover\:animate-scroll-up-slow:hover   { animation-duration: 26s; }
+  #reviews:hover .animate-scroll-down,
+  #reviews:hover .animate-scroll-up {
+    animation-play-state: paused;
+  }
+</style>

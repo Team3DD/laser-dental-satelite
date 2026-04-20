@@ -1,0 +1,288 @@
+﻿{
+  "siteTitle": "Láser Dental",
+  "siteSubtitle": "SATÉLITE",
+  "header": {
+    "logo": "MedLaser",
+    "navItems": [
+      { "name": "Inicio", "link": "/" },
+      { "name": "Blog", "link": "/blog" },
+      { "name": "Contacto", "link": "/contacto" }
+    ],
+    "phone": "+52 55 3921 4181"
+  },
+  "hero": {
+    "ctaText": "Agendar Cita",
+    "slides": [
+      {
+        "badge": "Tecnología Láser Avanzada",
+        "titleTop": "Sin Dolor,",
+        "titleBottom": "Sin Anestesia.",
+        "description": "Tratamientos dentales de última generación con tecnología láser que elimina el dolor y la anestesia. Recupera tu sonrisa con confianza."
+      },
+      {
+        "badge": "Odontología Moderna",
+        "titleTop": "Tu Sonrisa,",
+        "titleBottom": "Nuestra Misión.",
+        "description": "Más de 15 años transformando vidas con tratamientos dentales precisos, seguros y completamente indoloros."
+      },
+      {
+        "badge": "+5,000 Pacientes Satisfechos",
+        "titleTop": "Resultados Reales,",
+        "titleBottom": "Confianza Total.",
+        "description": "Cada tratamiento está diseñado para ti. Tecnología de vanguardia y un equipo comprometido con tu bienestar."
+      },
+      {
+        "badge": "11 Especialidades Dentales",
+        "titleTop": "Atención Completa,",
+        "titleBottom": "Bajo Un Solo Techo.",
+        "description": "Desde ortodoncia hasta implantes, contamos con todas las especialidades que necesitas en un solo lugar."
+      }
+    ],
+    "stats": [
+      { "value": "+15.000", "label": "Pacientes felices" },
+      { "value": "98%", "label": "Satisfacción" },
+      { "value": "24/7", "label": "Atención continua" }
+    ]
+  },
+  "nosotros": {
+    "mission": "Ofrecer tratamientos láser innovadores con calidez y excelencia médica.",
+    "vision": "Ser referentes en tecnología láser a nivel nacional, mejorando calidad de vida.",
+    "values": ["Innovación", "Confianza", "Empatía", "Excelencia"],
+    "features": [
+      "Equipo con 10+ años de experiencia",
+      "Tecnología de última generación",
+      "Atención personalizada"
+    ],
+    "videoCardTitle": "Odontología sin dolor",
+    "videoCardDescription": "Tratamientos láser de última generación que eliminan el miedo al dentista.",
+    "expertBadge": "Expertos en Odontología Láser",
+    "expertTitle": "Cuidado dental avanzado sin dolor",
+    "expertDescription": "Somos una empresa dedicada a tratamientos de salud y estética bucal que busca una atención amigable sin dolor y sin anestesia. Nos caracterizamos por tener la mejor tecnología disponible en el mundo.",
+    "bannerTitle": "Nuestros Valores",
+    "bannerSubtitle": "La base de nuestra atención"
+  },
+  "serviciosPage": {
+    "label": "Nuestros Servicios",
+    "title": "Especialidades Dentales",
+    "description": "Un portafolio completo de tratamientos diseñados para tu sonrisa y bienestar"
+  },
+  "servicios": [
+    {
+      "name": "Odontología Integral",
+      "image": "/servicios/laserdental01.jpg",
+      "badge": "Sin dolor · Sin anestesia",
+      "description": "Eliminación de caries con láser sin dolor y sin anestesia. Restauraciones estéticas para una rehabilitación perfecta del diente."
+    },
+    {
+      "name": "Cosmética y Diseño de Sonrisa",
+      "image": "/servicios/laserdental02.jpg",
+      "badge": "Tecnología avanzada",
+      "description": "Armonía entre las características faciales del paciente para lograr el diseño de una sonrisa perfecta con lo último en tecnología."
+    },
+    {
+      "name": "Blanqueamiento Dental",
+      "image": "/servicios/laserdental03.jpg",
+      "badge": "Sin sensibilidad",
+      "description": "Varios tonos más blanco sin dañar la estructura del diente. La tecnología láser elimina la sensibilidad post-tratamiento."
+    },
+    {
+      "name": "Odontología Infantil",
+      "image": "/servicios/laserdental04.jpg",
+      "badge": "Técnicas indoloras",
+      "description": "Técnicas preventivas y restaurativas indoloras con láser para niños y adolescentes, haciendo de cada visita una experiencia agradable."
+    },
+    {
+      "name": "Prótesis y Endodoncia",
+      "image": "/servicios/laserdental05.jpg",
+      "badge": "Alta calidad",
+      "description": "Sustitución de dientes perdidos con los mejores materiales. Endodoncias con láser en menos tiempo, sin molestias y máxima precisión."
+    },
+    {
+      "name": "Ortodoncia y Ortopedia",
+      "image": "/servicios/laserdental06.jpg",
+      "badge": "Estética dental",
+      "description": "Obtén la mejor sonrisa con lo más estético en tecnología de ortodoncia y ortopedia dental para todas las edades."
+    },
+    {
+      "name": "Cirugía e Implantes",
+      "image": "/servicios/laserdental07.jpg",
+      "badge": "Especialistas certificados",
+      "description": "Reposición de dientes perdidos e implantes con los mejores especialistas. Extracción de terceros molares asistida con láser terapéutico."
+    },
+    {
+      "name": "Cirugía Periodontal",
+      "image": "/servicios/laserdental08.jpg",
+      "badge": "Tratamiento especializado",
+      "description": "Cirugía en encía y hueso alveolar para acceder a depósitos subgingivales y corregir defectos de posición y tamaño en encía y hueso dental."
+    },
+    {
+      "name": "Oclusión y Guardas",
+      "image": "/servicios/laserdental09.jpg",
+      "badge": "Prevención",
+      "description": "Guardas para pacientes con bruxismo que rechinan o aprietan los dientes. Análisis oclusal para estabilidad del sistema masticatorio."
+    },
+    {
+      "name": "Adulto Mayor",
+      "image": "/servicios/laserdental10.jpg",
+      "badge": "Atención especializada",
+      "description": "Atención del adulto mayor con las mejores técnicas y láser compatible con cualquier condición de salud, garantizando confort y seguridad."
+    }
+  ],
+  "reviewsPage": {
+    "label": "Opiniones Reales",
+    "title": "Sonrisas que nos respaldan"
+  },
+  "testimonials": [
+    {
+      "text": "El tratamiento con láser fue increíble. Cero dolor, y en una sola sesión mi sonrisa cambió por completo.",
+      "name": "María F.",
+      "location": "Lima",
+      "service": "Blanqueamiento Dental"
+    },
+    {
+      "text": "Siempre tuve miedo al dentista, pero aquí me hicieron sentir tranquilo. La tecnología láser es mágica.",
+      "name": "Carlos R.",
+      "location": "Bogotá",
+      "service": "Odontología Integral"
+    },
+    {
+      "text": "Mi hija salió feliz de su primera consulta. Sin anestesia, sin llanto. Odontología infantil con láser es lo mejor.",
+      "name": "Andrea M.",
+      "location": "Santiago",
+      "service": "Odontología Infantil"
+    },
+    {
+      "text": "El diseño de sonrisa que me hicieron superó mis expectativas. Se nota la calidad y la tecnología avanzada.",
+      "name": "Valeria T.",
+      "location": "CDMX",
+      "service": "Diseño de Sonrisa"
+    },
+    {
+      "text": "Recuperé mi diente con una prótesis láser, sin molestias y en tiempo récord. Muy profesionales.",
+      "name": "Jorge P.",
+      "location": "Quito",
+      "service": "Prótesis y Endodoncia"
+    },
+    {
+      "text": "Nunca pensé que una endodoncia pudiera ser tan rápida y sin dolor. El láser cambió mi experiencia dental.",
+      "name": "Lucía G.",
+      "location": "Buenos Aires",
+      "service": "Endodoncia Láser"
+    },
+    {
+      "text": "Excelente atención personalizada. Me explicaron cada paso y usaron lo último en tecnología láser.",
+      "name": "Ricardo D.",
+      "location": "Panamá",
+      "service": "Especialidades Avanzadas"
+    },
+    {
+      "text": "El blanqueamiento no me generó sensibilidad y quedé varios tonos más blanca. Muy agradecida.",
+      "name": "Camila S.",
+      "location": "Montevideo",
+      "service": "Blanqueamiento Dental"
+    }
+  ],
+  "contactPage": {
+    "badge": "Agenda tu cita",
+    "title": "Contáctanos",
+    "description": "Completa el formulario y te confirmaremos tu cita vía WhatsApp en menos de 24 horas.",
+    "address": "Cto. Cirujanos 22A, Cd. Satélite, 53100 Naucalpan de Juárez, Méx., México",
+    "schedule": {
+      "monday": "9 a.m.–8 p.m.",
+      "tuesday": "9 a.m.–8 p.m.",
+      "wednesday": "9 a.m.–8 p.m.",
+      "thursday": "9 a.m.–8 p.m.",
+      "friday": "9 a.m.–8 p.m.",
+      "saturday": "9 a.m.–1 p.m.",
+      "sunday": "Cerrado"
+    },
+    "formTitle": "Solicita tu cita",
+    "formDescription": "Completa tus datos y te contactaremos para confirmar.",
+    "formFields": {
+      "name": { "label": "Nombre completo", "placeholder": "María García" },
+      "email": { "label": "Correo electrónico", "placeholder": "maria@ejemplo.com" },
+      "phone": { "label": "Teléfono", "placeholder": "55 3921 4181" },
+      "appointmentType": {
+        "label": "Tipo de consulta",
+        "options": [
+          { "value": "primera-vez", "label": "Primera consulta" },
+          { "value": "seguimiento", "label": "Consulta de seguimiento" },
+          { "value": "cirugia", "label": "Consulta pre-quirúrgica" },
+          { "value": "dolor", "label": "Evaluación de dolor" },
+          { "value": "segunda-opinion", "label": "Segunda opinión" }
+        ]
+      },
+      "preferredDate": { "label": "Fecha preferida" },
+      "preferredTime": {
+        "label": "Hora preferida",
+        "options": [
+          "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+          "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
+        ]
+      },
+      "message": { "label": "Mensaje (opcional)", "placeholder": "Describe tus síntomas o necesidades" }
+    },
+    "submitButton": "¡Agenda hoy!",
+    "successMessage": "WhatsApp se ha abierto con tu solicitud. Completa el envío en la aplicación.",
+    "errorMessage": "Por favor completa nombre, correo y teléfono.",
+    "errorAppointmentType": "Selecciona el tipo de consulta.",
+    "whatsappNumber": "5239214181",
+    "sundayMessage": "Gracias por tu preferencia, los domingos no laboramos. Selecciona otro día y con gusto te atendemos."
+  },
+  "footer": {
+    "logoMain": "Láser Dental",
+    "logoSub": "SATÉLITE",
+    "about": "Clínica líder en tratamientos láser con enfoque humano y tecnología de vanguardia.",
+    "exploreTitle": "Explorar",
+    "legalTitle": "Legal",
+    "contactQuickTitle": "Contacto rápido",
+    "links": [
+      { "name": "Aviso legal", "link": "/legal" },
+      { "name": "Política de privacidad", "link": "/privacidad" },
+      { "name": "Cookies", "link": "/cookies" }
+    ],
+    "exploreLinks": [
+      { "name": "Inicio", "link": "#inicio" },
+      { "name": "Nosotros", "link": "#nosotros" },
+      { "name": "Servicios", "link": "#servicios" },
+      { "name": "Contacto", "link": "#contacto" }
+    ],
+    "legalLinks": [
+      { "name": "Política de Privacidad", "link": "#" },
+      { "name": "Términos de Servicio", "link": "#" }
+    ],
+    "social": {
+      "instagram": "https://instagram.com/tu-cuenta",
+      "facebook": "https://facebook.com/tu-cuenta",
+      "twitter": "https://twitter.com/tu-cuenta"
+    },
+    "copyright": {
+      "text": "© {year} {siteTitle}. Todos los derechos reservados.",
+      "designCredit": {
+        "text": "Design & Development by",
+        "name": "DAUC",
+        "url": ""
+      }
+    },
+    "copyrightText": "Todos los derechos reservados.",
+    "creditText": "Design & Development by",
+    "creditLinkText": "DAUC",
+    "privacyLinkText": "Política de Privacidad",
+    "termsLinkText": "Términos de Servicio"
+  },
+  "blogPage": {
+    "label": "Consejos y novedades",
+    "title": "Blog",
+    "description": "Todo sobre salud bucal, tecnología láser y cuidado dental de la mano de nuestros especialistas."
+  },
+  "contacto": {
+    "direccion": "Cto. Cirujanos 22A, Cd. Satélite, 53100 Naucalpan de Juárez, Méx., México",
+    "telefono": "+52 55 3921 4181",
+    "email": "info@laserdental.com",
+    "horarios": "Lun-Vie: 9am - 8pm | Sáb: 10am - 1pm"
+  },
+  "frases": [
+    "La tecnología avanza, nuestra calidez permanece.",
+    "Tu salud es nuestra prioridad con innovación láser."
+  ]
+}

@@ -1,0 +1,189 @@
+﻿---
+import siteData from '../content/site.json';
+import Button from './ui/button.astro';
+
+// Tipado ampliado (agrega los nuevos campos a tu site.json)
+interface SiteData {
+  siteTitle: string;
+  siteSubtitle: string;          // ← NUEVO: "SATÉLITE"
+  footer: {
+    about: string;
+    links: Array<{ name: string; link: string }>;       // Legal
+    exploreLinks: Array<{ name: string; link: string }>; // ← NUEVO: enlaces de "Explorar"
+    legalLinks: Array<{ name: string; link: string }>;   // ← NUEVO: enlaces legales (pie)
+    social?: {
+      instagram?: string;
+      facebook?: string;
+      twitter?: string;
+    };
+    copyright: {
+      text: string;               // ← NUEVO: "© {year} {siteTitle} ..."
+      designCredit: {
+        text: string;             // "Design & Development by"
+        name: string;             // "DAUC"
+        url?: string;
+      };
+    };
+  };
+  contacto: {
+    telefono?: string;
+    email?: string;
+    direccion?: string;
+  };
+}
+
+const { footer, siteTitle, siteSubtitle, contacto } = siteData as SiteData;
+
+// Mapa de iconos sociales (sin hardcoding de rutas)
+const socialIcons = {
+  instagram: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z',
+  facebook: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z',
+  twitter: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z',
+};
+
+// Iconos de contacto (paths)
+const contactIcons = {
+  phone: 'M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25z',
+  email: 'M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75',
+  location: 'M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z',
+};
+---
+
+<footer class="relative overflow-hidden pt-20 pb-10 bg-sky-950">
+  <!-- Watermark gigante de fondo -->
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none select-none z-0">
+    <span class="font-['Playfair_Display'] font-bold text-white/3 whitespace-nowrap leading-none"
+          style="font-size: clamp(80px, 18vw, 320px);">
+      {siteTitle}
+    </span>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <!-- Grid principal: 4 columnas en desktop, 2 en móvil, todas centradas -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
+
+      <!-- Columna 1: logo + descripción + redes sociales -->
+      <div class="col-span-2 md:col-span-1 text-center">
+        <div class="flex flex-col items-center gap-0 mb-4">
+          <a href="/" class="font-['Playfair_Display'] text-3xl font-bold leading-none text-white hover:opacity-75 transition-opacity duration-200">
+            {siteTitle}
+          </a>
+          <span class="text-[0.55rem] tracking-[0.8em] text-white/60 mt-1">
+            {siteSubtitle}
+          </span>
+        </div>
+        <p class="text-sm text-white/60 leading-relaxed mb-6 max-w-xs mx-auto">{footer.about}</p>
+        <div class="flex justify-center gap-3">
+          {footer.social?.instagram && (
+            <Button variant="circle" size="md" href={footer.social.instagram} ariaLabel="Instagram">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d={socialIcons.instagram} />
+              </svg>
+            </Button>
+          )}
+          {footer.social?.facebook && (
+            <Button variant="circle" size="md" href={footer.social.facebook} ariaLabel="Facebook">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d={socialIcons.facebook} />
+              </svg>
+            </Button>
+          )}
+          {footer.social?.twitter && (
+            <Button variant="circle" size="md" href={footer.social.twitter} ariaLabel="Twitter / X">
+              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d={socialIcons.twitter} />
+              </svg>
+            </Button>
+          )}
+        </div>
+      </div>
+
+      <!-- Columna 2: Explorar -->
+      <div class="text-center">
+        <h4 class="font-semibold text-white mb-4 text-sm tracking-wide">Explorar</h4>
+        <ul class="list-none p-0 space-y-3">
+          {footer.exploreLinks.map((link) => (
+            <li>
+              <a href={link.link} class="text-sm text-white/60 hover:text-white transition-colors inline-block">
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 3: Legal -->
+      <div class="text-center">
+        <h4 class="font-semibold text-white mb-4 text-sm tracking-wide">Legal</h4>
+        <ul class="list-none p-0 space-y-3">
+          {footer.links.map((link) => (
+            <li>
+              <a href={link.link} class="text-sm text-white/60 hover:text-white transition-colors inline-block">
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 4: Contacto rápido -->
+      <div class="text-center">
+        <h4 class="font-semibold text-white mb-4 text-sm tracking-wide">Contacto rápido</h4>
+        <ul class="list-none p-0 space-y-3">
+          {contacto?.telefono && (
+            <li class="flex justify-center items-center gap-2 text-sm text-white/60">
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={contactIcons.phone} />
+              </svg>
+              <a href={`tel:${contacto.telefono}`} class="hover:text-white transition-colors">{contacto.telefono}</a>
+            </li>
+          )}
+          {contacto?.email && (
+            <li class="flex justify-center items-center gap-2 text-sm text-white/60">
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={contactIcons.email} />
+              </svg>
+              <a href={`mailto:${contacto.email}`} class="hover:text-white transition-colors">{contacto.email}</a>
+            </li>
+          )}
+          {contacto?.direccion && (
+            <li class="flex justify-center items-start gap-2 text-sm text-white/60">
+              <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={contactIcons.location} />
+              </svg>
+              <span>{contacto.direccion}</span>
+            </li>
+          )}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Línea inferior con copyright + crédito DAUC -->
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex flex-col items-center md:items-start gap-1">
+        <p class="text-xs text-white/40">
+          {footer.copyright.text
+            .replace('{year}', new Date().getFullYear().toString())
+            .replace('{siteTitle}', siteTitle)}
+        </p>
+        <p class="text-gray-400 text-xs">
+          {footer.copyright.designCredit.text}{" "}
+          {footer.copyright.designCredit.url ? (
+            <a href={footer.copyright.designCredit.url} class="text-sky-400 hover:text-white transition-colors cursor-pointer font-medium">
+              {footer.copyright.designCredit.name}
+            </a>
+          ) : (
+            <span class="text-sky-400 hover:text-white transition-colors cursor-pointer font-medium">
+              {footer.copyright.designCredit.name}
+            </span>
+          )}
+        </p>
+      </div>
+      <div class="flex gap-6">
+        {footer.legalLinks.map((link) => (
+          <a href={link.link} class="text-xs text-white/40 hover:text-white/70 transition-colors">{link.name}</a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>
