@@ -16,19 +16,29 @@ const navLinks = [
 
       <div class="flex items-center gap-12">
         {navLinks.map(({ href, label }) => (
-          <a href={href} class="text-lg tracking-wide text-sky-950 hover:text-white/80 transition-opacity duration-200">
+          <a href={href} class="text-lg tracking-wide text-emerald-900 hover:text-white/80 transition-opacity duration-200">
             {label}
           </a>
         ))}
       </div>
 
-      <div class="flex flex-col items-center gap-0 text-sky-950 hover:text-white/80 transition-opacity duration-200">
-        <a href="/" class="font-serif text-2xl font-bold text-shadow-sm">Láser Dental</a>
-        <span class="text-[0.55rem] tracking-[0.8em] pl-[0.8em]">SATÉLITE</span>
+      <div class="group flex flex-col items-center gap-0">
+        <a href="/" class="relative w-32 h-20 block">
+          <img
+            src="/logoNegro.png"
+            alt="Láser Dental Satélite"
+            class="absolute inset-0 w-full h-full object-contain transition-opacity duration-200 opacity-100 group-hover:opacity-0"
+          />
+          <img
+            src="/logoBlanco.png"
+            alt="Láser Dental Satélite"
+            class="absolute inset-0 w-full h-full object-contain transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+          />
+        </a>
       </div>
 
       <div class="flex justify-end items-center gap-12">
-        <a href="/blog" class="text-lg tracking-wide text-sky-950 hover:text-white/80 transition-opacity duration-200">
+        <a href="/blog" class="text-lg tracking-wide text-emerald-900 hover:text-white/80 transition-opacity duration-200">
           Blog
         </a>
         <Button text="Contacto" href="#contacto" variant="primary" size="md" />
@@ -41,12 +51,22 @@ const navLinks = [
 
     <div class="lg:hidden flex items-center justify-between h-16">
 
-      <div class="flex flex-col items-center gap-0 text-sky-950">
-        <a href="/" class="font-serif text-lg font-bold leading-none">Láser Dental</a>
-        <span class="text-[0.5rem] tracking-[0.6em] pl-[0.6em]">SATÉLITE</span>
+      <div class="group flex flex-col items-center gap-0">
+        <a href="/" class="relative w-32 h-14 block">
+          <img
+            src="/logoNegro.png"
+            alt="Láser Dental Satélite"
+            class="absolute inset-0 w-full h-full object-contain transition-opacity duration-200 opacity-100 group-hover:opacity-0"
+          />
+          <img
+            src="/logoBlanco.png"
+            alt="Láser Dental Satélite"
+            class="absolute inset-0 w-full h-full object-contain transition-opacity duration-200 opacity-0 group-hover:opacity-100"
+          />
+        </a>
       </div>
 
-      <label for="menu-toggle" class="cursor-pointer p-2 text-sky-950" aria-label="Abrir menú">
+      <label for="menu-toggle" class="cursor-pointer p-2 text-emerald-900" aria-label="Abrir menú">
         <svg class="menu-icon w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -62,11 +82,11 @@ const navLinks = [
       <div class="overflow-hidden">
         <div class="flex flex-col gap-4 py-5 border-t border-white/30">
           {navLinks.map(({ href, label }) => (
-            <a href={href} class="text-md tracking-wide text-sky-950 hover:text-white/80 transition-opacity duration-200">
+            <a href={href} class="text-md tracking-wide text-emerald-900 hover:text-white/80 transition-opacity duration-200">
               {label}
             </a>
           ))}
-          <a href="/blog" class="text-md tracking-wide text-sky-950 hover:text-white/80 transition-opacity duration-200">
+          <a href="/blog" class="text-md tracking-wide text-emerald-900 hover:text-white/80 transition-opacity duration-200">
             Blog
           </a>
           <div class="flex justify-end">

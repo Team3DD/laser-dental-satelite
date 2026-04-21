@@ -15,13 +15,13 @@ const columns = [
 ];
 ---
 
-<section id="reviews" class="py-24 overflow-hidden bg-gradient-to-t from-sky-200 via-sky-50 to-transparent" aria-labelledby="reviews-heading">
+<section id="reviews" class="py-24 overflow-hidden bg-gradient-to-b from-emerald-300 to-transparent" aria-labelledby="reviews-heading">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="text-center mb-20">
-      <span class="text-sm tracking-[0.7em] uppercase mb-4 block font-semibold">
+      <span class="text-sm tracking-[0.7em] uppercase mb-4 block font-semibold text-white/90">
         Opiniones Reales
       </span>
-      <h2 id="reviews-heading" class="text-4xl md:text-7xl leading-tight">
+      <h2 id="reviews-heading" class="text-4xl md:text-7xl leading-tight text-white text-shadow-md">
         Sonrisas que nos respaldan
       </h2>
     </div>
@@ -33,17 +33,16 @@ const columns = [
           {extended.map((item) => (
             <div class="card card--glass liquid-glass group flex flex-col h-full">
               <div class="relative z-10 p-8 flex flex-col h-full" style="color: inherit;">
-                <p class="font-['Playfair_Display'] text-xl leading-relaxed mb-6 italic text-center">
+                <p class="font-['Playfair_Display'] text-xl leading-relaxed mb-6 italic text-center text-emerald-900">
                   “{item.text}”
                 </p>
                 <div class="mt-auto flex items-end justify-between gap-4 pt-4">
                   <div>
-                    <p class="text-base font-bold">{item.name}</p>
-                    {item.location && <p class="text-sm opacity-70 mt-0.5">{item.location}</p>}
+                    <p class="text-base font-bold text-emerald-800">{item.name}</p>
+                    {item.location && <p class="text-sm opacity-70 mt-0.5 text-emerald-600">{item.location}</p>}
                   </div>
                   {item.service && (
-                    <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm"
-                          style="color: inherit;">
+                    <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm text-emerald-900">
                       {item.service}
                     </span>
                   )}
@@ -63,17 +62,16 @@ const columns = [
               {col.items.map((item) => (
                 <div class="card card--glass liquid-glass group flex flex-col h-full">
                   <div class="relative z-10 p-4 flex flex-col h-full" style="color: inherit;">
-                    <p class="font-['Playfair_Display'] text-xl leading-relaxed mb-6 italic text-center">
+                    <p class="font-['Playfair_Display'] text-xl leading-relaxed mb-6 italic text-center text-emerald-900">
                       “{item.text}”
                     </p>
                     <div class="mt-auto flex items-end justify-between gap-4 pt-4">
                       <div>
-                        <p class="text-base font-bold">{item.name}</p>
-                        {item.location && <p class="text-sm opacity-70 mt-0.5">{item.location}</p>}
+                        <p class="text-base font-bold text-emerald-800">{item.name}</p>
+                        {item.location && <p class="text-sm opacity-70 mt-0.5 text-emerald-600">{item.location}</p>}
                       </div>
                       {item.service && (
-                        <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm"
-                              style="color: inherit;">
+                        <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm text-emerald-900">
                           {item.service}
                         </span>
                       )}

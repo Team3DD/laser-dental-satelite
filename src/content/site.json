@@ -16,26 +16,26 @@
       {
         "badge": "Tecnología Láser Avanzada",
         "titleTop": "Sin Dolor,",
-        "titleBottom": "Sin Anestesia.",
-        "description": "Tratamientos dentales de última generación con tecnología láser que elimina el dolor y la anestesia. Recupera tu sonrisa con confianza."
+        "titleBottom": "Sin Anestesia",
+        "description": "Tratamientos dentales de última generación con tecnología láser que elimina el dolor y la anestesia. Recupera tu sonrisa con confianza"
       },
       {
         "badge": "Odontología Moderna",
         "titleTop": "Tu Sonrisa,",
-        "titleBottom": "Nuestra Misión.",
-        "description": "Más de 15 años transformando vidas con tratamientos dentales precisos, seguros y completamente indoloros."
+        "titleBottom": "Nuestra Misión",
+        "description": "Más de 15 años transformando vidas con tratamientos dentales precisos, seguros y completamente indoloros"
       },
       {
         "badge": "+5,000 Pacientes Satisfechos",
         "titleTop": "Resultados Reales,",
-        "titleBottom": "Confianza Total.",
-        "description": "Cada tratamiento está diseñado para ti. Tecnología de vanguardia y un equipo comprometido con tu bienestar."
+        "titleBottom": "Confianza Total",
+        "description": "Cada tratamiento está diseñado para ti. Tecnología de vanguardia y un equipo comprometido con tu bienestar"
       },
       {
         "badge": "11 Especialidades Dentales",
         "titleTop": "Atención Completa,",
-        "titleBottom": "Bajo Un Solo Techo.",
-        "description": "Desde ortodoncia hasta implantes, contamos con todas las especialidades que necesitas en un solo lugar."
+        "titleBottom": "Bajo Un Solo Techo",
+        "description": "Desde ortodoncia hasta implantes, contamos con todas las especialidades que necesitas en un solo lugar"
       }
     ],
     "stats": [
@@ -45,8 +45,11 @@
     ]
   },
   "nosotros": {
-    "mission": "Ofrecer tratamientos láser innovadores con calidez y excelencia médica.",
-    "vision": "Ser referentes en tecnología láser a nivel nacional, mejorando calidad de vida.",
+    "mission": ["Proporcionar servicios de Odontología con la mejor calidad, tecnología y atención personalizada a nuestros pacientes.",
+                "Sensibilizar al paciente sobre la importancia de tener una buena salud y estética bucal."],
+    "vision": ["Ser el centro de odontológico con el mejor servicio, alta calidad y con la mejor tecnología.",
+                "Franquiciatar la marca a nivel nacional e internacional."],
+
     "values": ["Innovación", "Confianza", "Empatía", "Excelencia"],
     "features": [
       "Equipo con 10+ años de experiencia",
@@ -74,7 +77,7 @@
       "description": "Eliminación de caries con láser sin dolor y sin anestesia. Restauraciones estéticas para una rehabilitación perfecta del diente."
     },
     {
-      "name": "Cosmética y Diseño de Sonrisa",
+      "name": "Diseño de Sonrisa",
       "image": "/servicios/laserdental02.jpg",
       "badge": "Tecnología avanzada",
       "description": "Armonía entre las características faciales del paciente para lograr el diseño de una sonrisa perfecta con lo último en tecnología."
