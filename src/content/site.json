@@ -8,7 +8,7 @@
       { "name": "Blog", "link": "/blog" },
       { "name": "Contacto", "link": "/contacto" }
     ],
-    "phone": "+52 55 3921 4181"
+    "phone": "+5215539214181"
   },
   "hero": {
     "ctaText": "Agendar Cita",
@@ -204,7 +204,7 @@
     "formFields": {
       "name": { "label": "Nombre completo", "placeholder": "María García" },
       "email": { "label": "Correo electrónico", "placeholder": "maria@ejemplo.com" },
-      "phone": { "label": "Teléfono", "placeholder": "55 3921 4181" },
+      "phone": { "label": "Teléfono", "placeholder": "+5215539214181" },
       "appointmentType": {
         "label": "Tipo de consulta",
         "options": [
@@ -229,7 +229,7 @@
     "successMessage": "WhatsApp se ha abierto con tu solicitud. Completa el envío en la aplicación.",
     "errorMessage": "Por favor completa nombre, correo y teléfono.",
     "errorAppointmentType": "Selecciona el tipo de consulta.",
-    "whatsappNumber": "5239214181",
+    "whatsappNumber": "5215539214181",
     "sundayMessage": "Gracias por tu preferencia, los domingos no laboramos. Selecciona otro día y con gusto te atendemos."
   },
   "footer": {
@@ -280,7 +280,7 @@
   },
   "contacto": {
     "direccion": "Cto. Cirujanos 22A, Cd. Satélite, 53100 Naucalpan de Juárez, Méx., México",
-    "telefono": "+52 55 3921 4181",
+    "telefono": "+5215539214181",
     "email": "info@laserdental.com",
     "horarios": "Lun-Vie: 9am - 8pm | Sáb: 10am - 1pm"
   },
