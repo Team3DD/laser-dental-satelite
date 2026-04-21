@@ -434,7 +434,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ? new Date(date + 'T12:00:00').toLocaleDateString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric' })
       : '';
 
-    const wa = `*SOLICITUD DE CITA*\n🏥 Laser Dental Satélite\n\n👤 *Paciente:*\n• Nombre: ${name}\n• Email: ${email}\n• Teléfono: ${phone}\n\n🩺 *Consulta:*\n• Tipo: ${typeLabels[type] || type}\n${dateStr ? `• Fecha: ${dateStr}\n` : ''}${time ? `• Hora: ${time}\n` : ''}\n📝 *Notas:*\n${msg || 'Sin comentarios'}\n\n---\nQuedo atento a su confirmación.`;
+    const wa = `*SOLICITUD DE CITA*\n🏥 Láser Dental Satélite\n\n👤 *Paciente:*\n• Nombre: ${name}\n• Email: ${email}\n• Teléfono: ${phone}\n\n🩺 *Consulta:*\n• Tipo: ${typeLabels[type] || type}\n${dateStr ? `• Fecha: ${dateStr}\n` : ''}${time ? `• Hora: ${time}\n` : ''}\n📝 *Notas:*\n${msg || 'Sin comentarios'}\n\n---\nQuedo atento a su confirmación.`;
 
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(wa)}`, '_blank');
     showAlert(successMessage, 'success');

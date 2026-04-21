@@ -62,7 +62,7 @@ const { servicios, serviciosPage } = siteData as {
             <!-- Label tap para móvil (visible solo en touch) -->
             <label
               for={`card-toggle-${i}`}
-              class="absolute inset-0 z-20 cursor-pointer lg:hidden"
+              class="absolute inset-0 z-20 cursor-pointer lg:hidden peer-checked:bottom-auto peer-checked:h-1/2"
               aria-label={`Ver más sobre ${s.name}`}
             />
 
@@ -75,7 +75,7 @@ const { servicios, serviciosPage } = siteData as {
                 <p class="text-white/85 text-lg leading-relaxed mb-8">
                   {s.description}
                 </p>
-                <div class="flex justify-end">
+                <div class="flex justify-end relative z-30">
                   <Button text="Agendar cita" href="#contacto" variant="primary" size="sm" />
                 </div>
               </div>
