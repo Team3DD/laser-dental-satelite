@@ -10,39 +10,41 @@ const col3 = extended.filter((_, i) => i % 3 === 2);
 
 const columns = [
   { items: col1, animation: 'animate-scroll-down', slow: false },
-  { items: col2, animation: 'animate-scroll-up', slow: false },
-  { items: col3, animation: 'animate-scroll-down', slow: true },
+  { items: col2, animation: 'animate-scroll-up',   slow: false },
+  { items: col3, animation: 'animate-scroll-down', slow: true  },
 ];
 ---
 
-<section id="reviews" class="py-24 overflow-hidden bg-gradient-to-b from-emerald-300 to-transparent" aria-labelledby="reviews-heading">
+<section id="reviews" class="py-4 sm:py-14 overflow-hidden bg-gradient-to-b from-emerald-700 to-transparent" aria-labelledby="reviews-heading">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-20">
+    <div class="text-center mb-12 md:mb-20">
       <span class="text-sm tracking-[0.7em] uppercase mb-4 block font-semibold text-white/90">
-        Opiniones Reales
+        {siteData.reviewsPage.label}
       </span>
-      <h2 id="reviews-heading" class="text-4xl md:text-7xl leading-tight text-white text-shadow-md">
-        Sonrisas que nos respaldan
+      <h2 id="reviews-heading" class="text-4xl md:text-7xl leading-tight text-white">
+        {siteData.reviewsPage.title}
       </h2>
     </div>
 
     <div class="relative">
+
       <!-- Mobile -->
-      <div class="md:hidden h-4/5 overflow-hidden relative">
-        <div class="animate-scroll-down hover:animate-scroll-down-slow flex flex-col gap-6">
+      <div class="md:hidden h-[560px] overflow-hidden">
+        <div class="animate-scroll-down flex flex-col gap-4" style="animation-duration: 60s;">
           {extended.map((item) => (
-            <div class="card card--glass liquid-glass group flex flex-col h-full">
-              <div class="relative z-10 p-8 flex flex-col h-full" style="color: inherit;">
-                <p class="font-['Playfair_Display'] text-xl leading-relaxed mb-6 italic text-center text-emerald-900">
-                  “{item.text}”
+            <div class="liquid-glass rounded-3xl flex flex-col">
+              <div class="relative z-10 p-5 flex flex-col">
+                <p class="text-base leading-relaxed mb-4 italic text-center text-emerald-900"
+                   style="font-family:'Playfair Display',Georgia,serif;">
+                  "{item.text}"
                 </p>
-                <div class="mt-auto flex items-end justify-between gap-4 pt-4">
+                <div class="flex items-end justify-between gap-4">
                   <div>
-                    <p class="text-base font-bold text-emerald-800">{item.name}</p>
-                    {item.location && <p class="text-sm opacity-70 mt-0.5 text-emerald-600">{item.location}</p>}
+                    <p class="text-sm font-bold text-emerald-800">{item.name}</p>
+                    {item.location && <p class="text-xs opacity-70 mt-0.5 text-emerald-600">{item.location}</p>}
                   </div>
                   {item.service && (
-                    <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm text-emerald-900">
+                    <span class="text-xs px-3 py-1 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 text-emerald-900">
                       {item.service}
                     </span>
                   )}
@@ -55,15 +57,16 @@ const columns = [
 
       <!-- Desktop -->
       <div class="hidden md:grid md:grid-cols-3 gap-6 h-[620px]">
-        {columns.map((col, idx) => (
+        {columns.map((col) => (
           <div class="overflow-hidden relative">
-            <div class={`${col.animation} hover:animate-scroll-down-slow flex flex-col gap-6`}
+            <div class={`${col.animation} flex flex-col gap-6`}
                  style={col.slow ? 'animation-duration: 26s;' : ''}>
               {col.items.map((item) => (
-                <div class="card card--glass liquid-glass group flex flex-col h-full">
-                  <div class="relative z-10 p-4 flex flex-col h-full" style="color: inherit;">
-                    <p class="font-['Playfair_Display'] text-xl leading-relaxed mb-6 italic text-center text-emerald-900">
-                      “{item.text}”
+                <div class="liquid-glass rounded-3xl flex flex-col">
+                  <div class="relative z-10 p-6 flex flex-col">
+                    <p class="text-xl leading-relaxed mb-6 italic text-center text-emerald-900"
+                       style="font-family:'Playfair Display',Georgia,serif;">
+                      "{item.text}"
                     </p>
                     <div class="mt-auto flex items-end justify-between gap-4 pt-4">
                       <div>
@@ -71,7 +74,7 @@ const columns = [
                         {item.location && <p class="text-sm opacity-70 mt-0.5 text-emerald-600">{item.location}</p>}
                       </div>
                       {item.service && (
-                        <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 shadow-sm text-emerald-900">
+                        <span class="text-xs px-4 py-1.5 rounded-full whitespace-nowrap backdrop-blur-sm bg-white/10 border border-white/30 text-emerald-900">
                           {item.service}
                         </span>
                       )}
@@ -83,23 +86,12 @@ const columns = [
           </div>
         ))}
       </div>
+
     </div>
   </div>
 </section>
 
 <style>
-  @keyframes scroll-down {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-50%); }
-  }
-  @keyframes scroll-up {
-    from { transform: translateY(-50%); }
-    to   { transform: translateY(0); }
-  }
-  .animate-scroll-down { animation: scroll-down 18s linear infinite; }
-  .animate-scroll-up   { animation: scroll-up 18s linear infinite; }
-  .hover\:animate-scroll-down-slow:hover { animation-duration: 26s; }
-  .hover\:animate-scroll-up-slow:hover   { animation-duration: 26s; }
   #reviews:hover .animate-scroll-down,
   #reviews:hover .animate-scroll-up {
     animation-play-state: paused;
